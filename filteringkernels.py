@@ -66,8 +66,8 @@ im_display = np.copy(im_data)
 
 fig, (axL, axR) = plt.subplots(ncols=2, constrained_layout=True)
 fig.suptitle(kernel_name)
-imL = axL.imshow(im_data, interpolation="none") # remove interpolation=...
-imR = axR.imshow(im_data, interpolation="none") # remove interpolation=...
+imL = axL.imshow(im_data, interpolation="none")  # remove interpolation=...
+imR = axR.imshow(im_data, interpolation="none")  # remove interpolation=...
 axR.set_xlim(axL.get_xlim()), axR.set_ylim(axL.get_ylim())
 axL.axis('off'), axR.axis('off')
 imR.set_clim([0, 1])
@@ -94,5 +94,8 @@ def update_plot(frame):
     return (imR,)
 
 
-ani = FuncAnimation(fig, func=update_plot, init_func=init_plot, interval=1000/FPS,
-                    frames=range(0, len(indices), Ninc), repeat=False, blit=True)
+if __name__ == "__main__":
+
+    ani = FuncAnimation(fig, func=update_plot, init_func=init_plot, interval=1000/FPS,
+                        frames=range(0, len(indices), Ninc), repeat=False, blit=True)
+    plt.show()
